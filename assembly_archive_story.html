@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>나라보다 먼저 태어난 국회 — 대한민국 임시의정원 이야기</title>
+<meta name="description" content="1919년, 정부보다 하루 먼저 태어난 국회 '임시의정원'의 이야기. 국회기록원이 들려주는 기록 기반 역사 콘텐츠.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2a4a;
+    --navy-dark:#081b33;
+    --navy-soft:#1c3f66;
+    --gold:#c9a54a;
+    --gold-soft:#e8d7a8;
+    --paper:#faf5ea;
+    --paper-dark:#f1e8d6;
+    --ink:#22303f;
+    --muted:#5c6b7c;
+    --red:#bf3040;
+    --white:#ffffff;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(15,42,74,0.12);
+    --maxw:1080px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    margin:0;
+    font-family:'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Gowun Batang', serif; margin:0; line-height:1.35;}
+  p{margin:0 0 1em;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+
+  /* ---------- progress bar ---------- */
+  #progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--gold), var(--red));
+    z-index:1000; transition:width .1s linear;
+  }
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:900;
+    background:rgba(15,42,74,0.96);
+    backdrop-filter:blur(6px);
+    color:var(--white);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 20px; max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:8px;
+    font-weight:700; font-size:15px; letter-spacing:.3px;
+  }
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--gold);}
+  nav.links{display:flex; gap:22px;}
+  nav.links a{
+    font-size:14px; color:rgba(255,255,255,0.82); text-decoration:none; font-weight:500;
+    padding:6px 2px; border-bottom:2px solid transparent; transition:border-color .2s, color .2s;
+  }
+  nav.links a:hover, nav.links a:focus-visible{color:var(--gold-soft); border-color:var(--gold);}
+  .menu-btn{
+    display:none; background:none; border:1px solid rgba(255,255,255,0.35); color:var(--white);
+    width:42px; height:42px; border-radius:10px; align-items:center; justify-content:center;
+  }
+  .menu-btn span, .menu-btn::before, .menu-btn::after{
+    content:""; display:block; width:20px; height:2px; background:var(--white); position:relative;
+  }
+  .menu-btn::before{margin-bottom:5px;}
+  .menu-btn::after{margin-top:5px;}
+  .mobile-menu{
+    display:none; flex-direction:column; background:var(--navy-dark);
+    padding:6px 20px 18px;
+  }
+  .mobile-menu a{
+    color:rgba(255,255,255,0.88); text-decoration:none; padding:12px 4px; font-size:15px;
+    border-bottom:1px solid rgba(255,255,255,0.08); font-weight:500;
+  }
+  .mobile-menu.open{display:flex;}
+
+  @media (max-width: 760px){
+    nav.links{display:none;}
+    .menu-btn{display:flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(201,165,74,0.25), transparent 45%),
+      radial-gradient(circle at 80% 0%, rgba(191,48,64,0.18), transparent 40%),
+      linear-gradient(160deg, var(--navy-dark), var(--navy) 60%, var(--navy-soft));
+    color:var(--white);
+    padding:clamp(56px,10vw,110px) 20px clamp(70px,12vw,130px);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 24px);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:760px; margin:0 auto; text-align:center; position:relative; z-index:1;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25);
+    padding:6px 16px; border-radius:999px; font-size:13px; font-weight:700;
+    letter-spacing:.5px; margin-bottom:22px; color:var(--gold-soft);
+  }
+  .hero h1{
+    font-size:clamp(28px,5.6vw,50px); font-weight:700; margin-bottom:18px;
+    text-shadow:0 4px 24px rgba(0,0,0,0.25);
+  }
+  .hero h1 em{color:var(--gold); font-style:normal;}
+  .hero p.lead{
+    font-size:clamp(15px,2.4vw,19px); color:rgba(255,255,255,0.86); max-width:560px; margin:0 auto 34px;
+  }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--gold); color:var(--navy-dark); font-weight:700; font-size:15px;
+    padding:14px 26px; border-radius:999px; border:none; box-shadow:0 12px 24px rgba(201,165,74,0.35);
+    transition:transform .2s;
+  }
+  .hero-cta:hover{transform:translateY(-2px);}
+  .hero-cta:active{transform:translateY(0);}
+  .scroll-cue{
+    margin-top:46px; font-size:12px; color:rgba(255,255,255,0.6); letter-spacing:2px;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-cue .chevron{
+    width:10px; height:10px; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold);
+    transform:rotate(45deg); animation:bob 1.8s infinite;
+  }
+  @keyframes bob{0%,100%{transform:rotate(45deg) translate(0,0);}50%{transform:rotate(45deg) translate(4px,4px);}}
+
+  /* ---------- sections general ---------- */
+  main section{padding:clamp(52px,8vw,96px) 0;}
+  .section-head{max-width:640px; margin:0 auto 40px; text-align:center;}
+  .kicker{
+    display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:1.5px;
+    color:var(--red); text-transform:uppercase; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(22px,3.6vw,32px); color:var(--navy-dark);}
+  .section-head p{color:var(--muted); font-size:15.5px; margin-top:12px;}
+
+  .band-alt{background:var(--paper-dark);}
+  .band-navy{background:linear-gradient(160deg, var(--navy-dark), var(--navy)); color:var(--white);}
+  .band-navy .section-head h2{color:var(--white);}
+  .band-navy .section-head p{color:rgba(255,255,255,0.75);}
+  .band-navy .kicker{color:var(--gold-soft);}
+
+  /* ---------- tldr ---------- */
+  .tldr{
+    background:var(--white); border:1px solid var(--paper-dark);
+    border-left:6px solid var(--gold);
+    border-radius:var(--radius); padding:26px 26px 20px; box-shadow:var(--shadow);
+    max-width:760px; margin:-54px auto 0; position:relative; z-index:5;
+  }
+  .tldr h3{font-size:15px; font-weight:700; color:var(--navy); margin-bottom:14px; font-family:'Noto Sans KR',sans-serif;}
+  .tldr ol{margin:0; padding-left:20px; color:var(--ink); font-size:14.5px;}
+  .tldr li{margin-bottom:8px;}
+  .tldr strong{color:var(--red);}
+
+  /* ---------- hook question ---------- */
+  .hook-card{
+    max-width:640px; margin:0 auto; background:var(--white); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:clamp(24px,4vw,40px); text-align:center;
+  }
+  .hook-card .q{font-size:clamp(18px,3vw,23px); font-weight:700; color:var(--navy-dark); margin-bottom:22px;}
+  .hook-choices{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .hook-choices button{
+    min-width:120px; padding:13px 24px; border-radius:999px; border:2px solid var(--navy);
+    background:var(--white); color:var(--navy); font-weight:700; font-size:15px; transition:.2s;
+  }
+  .hook-choices button:hover{background:var(--navy); color:var(--white);}
+  .hook-answer{
+    margin-top:24px; padding:18px 20px; border-radius:14px; background:var(--paper-dark);
+    text-align:left; font-size:14.5px; color:var(--ink); display:none;
+  }
+  .hook-answer.show{display:block; animation:fadein .4s ease;}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+  .hook-answer b{color:var(--red);}
+
+  /* ---------- compare cards ---------- */
+  .compare-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:760px; margin:0 auto 40px;
+  }
+  @media (max-width:620px){.compare-grid{grid-template-columns:1fr;}}
+  .flip-card{
+    perspective:1200px; height:230px;
+  }
+  .flip-inner{
+    position:relative; width:100%; height:100%; transition:transform .6s; transform-style:preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{
+    position:absolute; inset:0; backface-visibility:hidden; border-radius:16px;
+    padding:22px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .flip-front{background:var(--navy); color:var(--white);}
+  .flip-front .icon{font-size:34px; margin-bottom:10px;}
+  .flip-front h4{font-size:18px; margin-bottom:6px;}
+  .flip-front .tap{font-size:12px; color:var(--gold-soft); margin-top:14px; letter-spacing:.5px;}
+  .flip-back{background:var(--white); border:2px solid var(--gold); transform:rotateY(180deg); font-size:13.8px; color:var(--ink);}
+  .flip-back strong{display:block; color:var(--red); margin-bottom:6px; font-size:14.5px;}
+
+  .diagram{
+    max-width:640px; margin:0 auto; background:var(--white); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:26px; text-align:center;
+  }
+  .diagram-row{display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin:10px 0;}
+  .chip{
+    background:var(--paper-dark); border:1px solid var(--gold-soft); border-radius:12px;
+    padding:10px 16px; font-size:13.5px; font-weight:700; color:var(--navy);
+  }
+  .chip.big{background:var(--navy); color:var(--white); border-color:var(--navy);}
+  .arrow{color:var(--gold); font-size:18px;}
+  .year-split{display:flex; align-items:center; gap:14px; margin:18px 0 6px; color:var(--muted); font-size:13px;}
+  .year-split .line{flex:1; height:1px; background:var(--paper-dark); border-top:1px dashed #c9c0a9;}
+
+  /* ---------- timeline ---------- */
+  .timeline{max-width:760px; margin:0 auto; position:relative; padding-left:26px;}
+  .timeline::before{
+    content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--gold-soft), var(--gold));
+  }
+  .tl-item{position:relative; margin-bottom:14px;}
+  .tl-dot{
+    position:absolute; left:-26px; top:20px; width:20px; height:20px; border-radius:50%;
+    background:var(--white); border:3px solid var(--gold); z-index:2;
+  }
+  .tl-item.key .tl-dot{background:var(--red); border-color:var(--red);}
+  .tl-btn{
+    width:100%; text-align:left; background:var(--white); border:1px solid var(--paper-dark);
+    border-radius:14px; padding:16px 18px; box-shadow:0 3px 10px rgba(15,42,74,0.06);
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  .tl-btn .yr{font-weight:900; color:var(--navy); font-size:15px; white-space:nowrap;}
+  .tl-btn .ttl{font-weight:700; color:var(--ink); font-size:14.5px; flex:1; margin-left:14px;}
+  .tl-btn .plus{color:var(--gold); font-size:20px; font-weight:700; transition:transform .25s;}
+  .tl-item.open .plus{transform:rotate(45deg);}
+  .tl-detail{
+    max-height:0; overflow:hidden; transition:max-height .35s ease; font-size:14px; color:var(--muted);
+    background:var(--paper-dark); border-radius:0 0 14px 14px; margin-top:-6px;
+  }
+  .tl-item.open .tl-detail{max-height:420px; padding:14px 18px 16px;}
+  .tl-detail p{margin:0;}
+
+  /* ---------- function cards ---------- */
+  .func-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:900px; margin:0 auto;
+  }
+  @media (max-width:760px){.func-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.func-grid{grid-template-columns:1fr;}}
+  .func-card{
+    background:var(--white); border-radius:16px; padding:20px 18px; box-shadow:var(--shadow);
+    text-align:center; border-top:4px solid var(--gold);
+  }
+  .func-card .icon{
+    width:46px; height:46px; border-radius:50%; background:var(--navy); color:var(--white);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:20px; font-weight:700;
+  }
+  .func-card h4{font-size:15.5px; color:var(--navy-dark); margin-bottom:6px;}
+  .func-card p{font-size:13px; color:var(--muted); margin:0;}
+
+  /* ---------- amendment tabs ---------- */
+  .tabs{max-width:820px; margin:0 auto;}
+  .tab-btns{display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; margin-bottom:20px; scrollbar-width:thin;}
+  .tab-btns button{
+    flex:0 0 auto; padding:10px 16px; border-radius:999px; border:2px solid var(--navy-soft);
+    background:var(--white); color:var(--navy); font-weight:700; font-size:13.5px; white-space:nowrap;
+  }
+  .tab-btns button.active{background:var(--navy); color:var(--white);}
+  .tab-panel{
+    display:none; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:26px; animation:fadein .35s ease;
+  }
+  .tab-panel.active{display:block;}
+  .tab-panel .badge{
+    display:inline-block; background:var(--gold); color:var(--navy-dark); font-weight:800; font-size:12.5px;
+    padding:4px 12px; border-radius:999px; margin-bottom:10px;
+  }
+  .tab-panel h4{font-size:19px; color:var(--navy-dark); margin-bottom:10px;}
+  .tab-panel .meta{font-size:12.5px; color:var(--muted); margin-bottom:14px;}
+  .tab-panel p{font-size:14.5px; color:var(--ink);}
+  .hanja-note{
+    margin-top:14px; font-size:13px; background:var(--paper-dark); border-left:3px solid var(--red);
+    padding:10px 14px; border-radius:8px; color:var(--muted);
+  }
+
+  /* ---------- party era ---------- */
+  .split-row{display:flex; gap:20px; max-width:820px; margin:0 auto 30px; flex-wrap:wrap;}
+  .split-card{flex:1; min-width:240px; background:var(--white); border-radius:16px; padding:20px; box-shadow:var(--shadow);}
+  .split-card.left{border-top:4px solid #4a6da8;}
+  .split-card.right{border-top:4px solid var(--red);}
+  .split-card h4{font-size:16px; margin-bottom:8px; color:var(--navy-dark);}
+  .split-card p{font-size:13.8px; color:var(--muted); margin:0;}
+  .merge-note{
+    max-width:640px; margin:0 auto; text-align:center; background:linear-gradient(120deg, var(--gold-soft), var(--paper));
+    border-radius:16px; padding:22px; font-size:14.5px; color:var(--navy-dark); font-weight:600;
+  }
+
+  /* ---------- records section ---------- */
+  .record-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:900px; margin:0 auto 30px;}
+  @media (max-width:760px){.record-grid{grid-template-columns:repeat(2,1fr);}}
+  .record-card{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16); border-radius:14px;
+    padding:16px; text-align:center;
+  }
+  .record-card .num{font-size:22px; font-weight:900; color:var(--gold);}
+  .record-card .lbl{font-size:12.5px; color:rgba(255,255,255,0.78); margin-top:4px;}
+  .quote-box{
+    max-width:680px; margin:0 auto; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.18);
+    border-radius:16px; padding:24px 26px; font-size:14.5px; color:rgba(255,255,255,0.9); position:relative;
+  }
+  .quote-box::before{content:"“"; font-family:'Gowun Batang',serif; font-size:60px; color:var(--gold); position:absolute; top:-10px; left:14px; opacity:.5;}
+
+  /* ---------- legacy / today ---------- */
+  .legacy-wrap{max-width:760px; margin:0 auto;}
+  .const-quote{
+    background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:26px;
+    border-left:6px solid var(--red); margin-bottom:26px;
+  }
+  .const-quote .tag{font-size:12px; font-weight:700; color:var(--red); letter-spacing:.5px; margin-bottom:8px; display:block;}
+  .const-quote p{font-size:15.5px; color:var(--navy-dark); font-weight:600; font-family:'Gowun Batang',serif; margin:0;}
+  .legacy-flow{display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; font-size:13.5px; margin-top:20px;}
+  .legacy-flow .node{background:var(--paper-dark); border-radius:10px; padding:10px 14px; font-weight:700; color:var(--navy);}
+  .legacy-flow .sep{color:var(--gold); font-weight:700;}
+
+  /* ---------- quiz ---------- */
+  .quiz-card{
+    max-width:680px; margin:0 auto 22px; background:var(--white); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:24px;
+  }
+  .quiz-card .qnum{font-size:12.5px; font-weight:700; color:var(--gold); letter-spacing:1px;}
+  .quiz-card .qtext{font-size:16.5px; font-weight:700; color:var(--navy-dark); margin:8px 0 16px;}
+  .quiz-opts{display:flex; flex-direction:column; gap:10px;}
+  .quiz-opts button{
+    text-align:left; padding:12px 16px; border-radius:12px; border:1.5px solid var(--paper-dark);
+    background:var(--paper); font-size:14.5px; color:var(--ink); transition:.15s;
+  }
+  .quiz-opts button:hover{border-color:var(--gold);}
+  .quiz-opts button.correct{background:#e7f5ea; border-color:#4a9c5d; color:#245c33; font-weight:700;}
+  .quiz-opts button.wrong{background:#fbe8e8; border-color:var(--red); color:#8a2530;}
+  .quiz-opts button[disabled]{cursor:default;}
+  .quiz-feedback{margin-top:14px; font-size:13.5px; color:var(--muted); background:var(--paper-dark); border-radius:10px; padding:12px 14px; display:none;}
+  .quiz-feedback.show{display:block; animation:fadein .3s ease;}
+  .quiz-result{
+    max-width:680px; margin:0 auto; text-align:center; background:var(--navy); color:var(--white);
+    border-radius:var(--radius); padding:28px; display:none;
+  }
+  .quiz-result.show{display:block; animation:fadein .4s ease;}
+  .quiz-result .score{font-size:34px; font-weight:900; color:var(--gold); margin-bottom:6px;}
+  .quiz-result p{font-size:14.5px; color:rgba(255,255,255,0.85); margin:0;}
+  .restart-btn{
+    margin-top:16px; background:var(--gold); color:var(--navy-dark); border:none; padding:10px 22px;
+    border-radius:999px; font-weight:700; font-size:13.5px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-dark); color:rgba(255,255,255,0.7); padding:40px 20px 30px; font-size:13px;}
+  footer .wrap{display:flex; flex-direction:column; gap:14px;}
+  footer .src{border-top:1px solid rgba(255,255,255,0.12); padding-top:16px; line-height:1.8;}
+  footer strong{color:var(--gold-soft);}
+
+  /* utility */
+  .center{text-align:center;}
+  .sr-btn-reset{all:unset; cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="site">
+  <div class="nav-row">
+    <div class="brand"><span class="dot"></span> 국회기록원 · 기록으로 배우는 역사</div>
+    <nav class="links">
+      <a href="#story">탄생 이야기</a>
+      <a href="#function">하는 일</a>
+      <a href="#const">헌법 개정</a>
+      <a href="#records">기록 이야기</a>
+      <a href="#quiz">퀴즈</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobileMenu"></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#story">탄생 이야기</a>
+    <a href="#compare">임시정부 vs 임시의정원</a>
+    <a href="#function">하는 일</a>
+    <a href="#const">헌법 개정</a>
+    <a href="#party">정당과 좌우합작</a>
+    <a href="#records">기록 이야기</a>
+    <a href="#legacy">오늘로 이어지다</a>
+    <a href="#quiz">퀴즈 풀기</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">국회기록원 기록 기반 콘텐츠</span>
+      <h1>나라보다 <em>하루</em> 먼저<br>태어난 국회가 있었다</h1>
+      <p class="lead">1919년 4월 10일, 상하이의 한 골목. 나라도, 대통령도, 영토도 없이 딱 한 가지 — 사람 29명이 모여 대한민국 첫 국회의 문을 열었습니다. 그 이름은 <b>임시의정원(臨時議政院)</b>.</p>
+      <a href="#hook" class="hero-cta">진짜였을까? 확인하기 ↓</a>
+      <div class="scroll-cue">SCROLL<span class="chevron"></span></div>
+    </div>
+  </section>
+
+  <div class="tldr">
+    <h3>📌 30초 요약</h3>
+    <ol>
+      <li><strong>1919년 4월 10일</strong> 임시의정원이 문을 열었고, 그 다음 날인 <strong>4월 11일</strong>이 정부가 공식 지정한 대한민국 임시정부 수립일입니다.</li>
+      <li>임시의정원은 헌법을 만들고 정부를 구성하고, 나랏일을 감시하는 <strong>진짜 '국회'의 일</strong>을 했습니다.</li>
+      <li>이 정신은 <strong>1948년 제헌헌법</strong>에 그대로 이어져, 지금 우리 국회의 뿌리가 되었습니다.</li>
+    </ol>
+  </div>
+
+  <!-- HOOK -->
+  <section id="hook">
+    <div class="wrap">
+      <div class="hook-card">
+        <p class="q">Q. 대한민국 임시정부와 대한민국 임시의정원, 같은 조직일까요?</p>
+        <div class="hook-choices">
+          <button data-answer="yes">네, 같다</button>
+          <button data-answer="no">아니오, 다르다</button>
+        </div>
+        <div class="hook-answer" id="hookAnswer">
+          <b>정답은 "다르다"입니다.</b> 두 조직은 이름이 비슷해서 자주 헷갈리지만, 실제로는 전혀 다른 일을 했어요. 오늘날로 치면 <b>정부(행정부)</b>와 <b>국회(입법부)</b>만큼 다릅니다. 왜 그런지, 지금부터 하나씩 풀어볼게요.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 1 · 헷갈리는 두 이름 구별하기</span>
+        <h2>임시정부 <span style="color:var(--gold);">vs</span> 임시의정원</h2>
+        <p>카드를 눌러서 뒷면을 확인해보세요.</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="flip-card" tabindex="0" role="button" aria-label="임시정부 카드, 눌러서 설명 보기">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="icon">🏛️</div>
+              <h4>임시정부</h4>
+              <div class="tap">눌러서 확인 →</div>
+            </div>
+            <div class="flip-face flip-back">
+              <strong>= 오늘날의 '행정부'</strong>
+              내무부·군무부·재무부 등 각 부서가 나라 살림을 실제로 운영했어요. 대통령(주석)이 이끌었습니다.
+            </div>
+          </div>
+        </div>
+        <div class="flip-card" tabindex="0" role="button" aria-label="임시의정원 카드, 눌러서 설명 보기">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="icon">🗳️</div>
+              <h4>임시의정원</h4>
+              <div class="tap">눌러서 확인 →</div>
+            </div>
+            <div class="flip-face flip-back">
+              <strong>= 오늘날의 '국회'</strong>
+              헌법을 만들고, 정부가 일을 잘하는지 감시하고, 나라의 중요한 결정에 동의하는 역할을 했어요.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram">
+        <div class="diagram-row">
+          <span class="chip big">대한민국 (국가)</span>
+        </div>
+        <div class="diagram-row" style="margin-top:14px;">
+          <span class="arrow">↙</span>
+          <span class="chip">임시의정원 (의회)</span>
+          <span class="chip">임시정부 (정부)</span>
+          <span class="arrow">↘</span>
+        </div>
+        <div class="year-split"><div class="line"></div>1919 → 1948<div class="line"></div></div>
+        <div class="diagram-row">
+          <span class="arrow">↓</span>
+          <span class="chip">국회</span>
+          <span class="chip">정부</span>
+          <span class="arrow">↓</span>
+        </div>
+        <p style="margin-top:16px; font-size:13px; color:var(--muted);">
+          국가라는 큰 틀 안에 '의회'와 '정부'가 함께 있었고, 이 구조가 1948년 이후 지금의 '국회'와 '정부'로 그대로 이어집니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY / TIMELINE -->
+  <section id="story">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 2 · 어떻게 탄생했을까</span>
+        <h2>나라 없이 국회가 태어나기까지</h2>
+        <p>연도를 눌러 자세한 이야기를 펼쳐보세요.</p>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="tl-item key">
+          <div class="tl-dot"></div>
+          <button class="tl-btn" aria-expanded="false">
+            <span class="yr">1910</span><span class="ttl">대한제국이 국권을 빼앗기다</span><span class="plus">+</span>
+          </button>
+          <div class="tl-detail"><p>나라를 잃은 독립운동가들은 처음엔 옛 황제의 나라를 '되찾자(복국)'고 생각했어요. 하지만 시간이 지나며 생각이 바뀝니다 — 옛 나라를 되찾는 게 아니라, <b>국민이 주인인 새 나라를 만들자(창국)</b>는 쪽으로요.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <button class="tl-btn" aria-expanded="false">
+            <span class="yr">1917</span><span class="ttl">"주권은 국민에게 있다" — 대동단결선언</span><span class="plus">+</span>
+          </button>
+          <div class="tl-detail"><p>신규식, 조소앙 등 독립운동가들이 발표한 선언문. 핵심 논리는 이랬어요. "황제가 주권을 포기한 그 순간, 주권은 사라진 게 아니라 국민에게 넘어왔다." 왕이 아닌 국민이 나라의 주인이라는 생각, 오늘날 민주공화국의 뿌리가 여기서 시작됩니다.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <button class="tl-btn" aria-expanded="false">
+            <span class="yr">1918-19</span><span class="ttl">세계가 바뀌다 — 파리강화회의와 3·1운동</span><span class="plus">+</span>
+          </button>
+          <div class="tl-detail"><p>제1차 세계대전이 끝나고, 미국 대통령 윌슨이 "각 민족은 스스로 운명을 결정할 권리가 있다"는 민족자결주의를 내세웠어요. 이 소식은 국내외 독립운동가들에게 큰 자극이 되었고, 1919년 2월 8일 도쿄 유학생들의 독립선언, 그리고 3월 1일 전국적인 3·1운동으로 이어졌습니다.</p></div>
+        </div>
+        <div class="tl-item key">
+          <div class="tl-dot"></div>
+          <button class="tl-btn" aria-expanded="false">
+            <span class="yr">1919.4.10</span><span class="ttl">상하이에서 29명이 모이다</span><span class="plus">+</span>
+          </button>
+          <div class="tl-detail"><p>이동녕 등 독립운동가 29명이 중국 상하이에 모여 회의를 열었습니다. 이 회의체가 바로 <b>임시의정원</b> — 대한민국 역사상 최초의 '국회'였어요. 아직 나라 이름도, 정부도 없는 상태였습니다.</p></div>
+        </div>
+        <div class="tl-item key">
+          <div class="tl-dot"></div>
+          <button class="tl-btn" aria-expanded="false">
+            <span class="yr">1919.4.11</span><span class="ttl">국호 '대한민국' 제정, 임시정부 조직</span><span class="plus">+</span>
+          </button>
+          <div class="tl-detail"><p>모인 지 단 하루 만에, 임시의정원은 '대한민국임시헌장'을 제정하고 나라 이름을 <b>대한민국</b>으로 정했습니다. 그리고 이 임시헌장에 따라 <b>임시정부</b>를 조직했지요. 즉 국회가 먼저 있었고, 그 국회가 정부를 만든 순서였습니다.</p><p>오늘날 정부가 공식 기념하는 '대한민국임시정부 수립일'이 바로 이 4월 11일이에요. 원래는 4월 13일을 수립일로 기념해왔지만, 2018년 역사 자료를 다시 검토한 뒤 2019년(수립 100주년)부터 4월 11일로 정정되었습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNCTIONS -->
+  <section id="function" class="band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 3 · 진짜 '국회'였던 이유</span>
+        <h2>임시의정원이 실제로 한 일</h2>
+        <p>이름만 국회가 아니라, 지금 우리 국회와 똑같은 기능을 갖추고 있었어요.</p>
+      </div>
+      <div class="func-grid">
+        <div class="func-card"><div class="icon">📜</div><h4>헌법 제정</h4><p>나라의 기본법을 만들고 다섯 차례나 새롭게 고쳤어요.</p></div>
+        <div class="func-card"><div class="icon">🏗️</div><h4>정부 구성</h4><p>임시정부의 조직과 인적 구성을 결정했어요.</p></div>
+        <div class="func-card"><div class="icon">💰</div><h4>예산·결산 심사</h4><p>정부가 돈을 어떻게 쓰는지 확인하고 승인했어요.</p></div>
+        <div class="func-card"><div class="icon">🔍</div><h4>국정 감사</h4><p>정부가 일을 제대로 하는지 눈을 떼지 않고 감시했어요.</p></div>
+        <div class="func-card"><div class="icon">✍️</div><h4>조약·선전포고 동의</h4><p>다른 나라와의 중요한 약속에 국회의 동의가 필요했어요.</p></div>
+        <div class="func-card"><div class="icon">⚖️</div><h4>대통령 탄핵</h4><p>1925년, 실제로 이승만 대통령을 탄핵하고 새 지도자를 선출했어요.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSTITUTION -->
+  <section id="const">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 4 · 시대에 맞춰 스스로 진화하다</span>
+        <h2>헌법, 다섯 번을 고치다</h2>
+        <p>26년의 임시정부 역사 동안, 헌법은 시대 상황에 맞춰 다섯 번 개정됐어요. 탭을 눌러 각 헌법을 살펴보세요.</p>
+      </div>
+      <div class="tabs">
+        <div class="tab-btns" id="tabBtns">
+          <button class="active" data-tab="0">제헌 1919</button>
+          <button data-tab="1">1차 1919</button>
+          <button data-tab="2">2차 1925</button>
+          <button data-tab="3">3차 1927</button>
+          <button data-tab="4">4차 1940</button>
+          <button data-tab="5">5차 1944</button>
+        </div>
+        <div class="tab-panel active" data-panel="0">
+          <span class="badge">1919.4.11 제정</span>
+          <h4>대한민국임시헌장 — 전문 10조</h4>
+          <div class="meta">가장 먼저 만들어진, 대한민국의 첫 헌법</div>
+          <p>임시의정원이 문을 연 바로 다음 날 만들어진 최초의 헌법이에요. 딱 10개 조항으로 아주 간단했지만, "대한민국은 민주공화제로 함"이라는 한 문장에 국민이 주인인 나라를 만들겠다는 의지가 담겨 있어요.</p>
+          <div class="hanja-note">💡 '헌장(憲章)'은 나라의 큰 원칙을 밝힌 글이라는 뜻이에요.</div>
+        </div>
+        <div class="tab-panel" data-panel="1">
+          <span class="badge">1919.9.11 개정</span>
+          <h4>대한민국임시헌법 — 전문 8장 58조</h4>
+          <div class="meta">대통령제 채택, 본격적인 통치기구로</div>
+          <p>상하이·한성·연해주 등 여러 곳에 흩어져 있던 임시정부들을 하나로 통합하며 만든 헌법이에요. 대통령제를 도입하고 임시의정원의 의결로 나라를 운영한다는 원칙을 확립해, 독립운동을 세계에 알리는 데도 힘을 실었어요.</p>
+        </div>
+        <div class="tab-panel" data-panel="2">
+          <span class="badge">1925.4.7 개정</span>
+          <h4>대한민국임시헌법 — 6장 35조</h4>
+          <div class="meta">이승만 대통령 탄핵, 국무령제 채택</div>
+          <p>임시의정원이 이승만 대통령을 탄핵하고 박은식을 2대 임시대통령으로 선출한 뒤 만든 헌법이에요. 이후 대통령제를 폐지하고 '국무령'이 나라를 이끄는 체제로 바꿨습니다. 국회가 정부 수반을 실제로 견제한 역사적 사례예요.</p>
+        </div>
+        <div class="tab-panel" data-panel="3">
+          <span class="badge">1927.4.11 개정</span>
+          <h4>대한민국임시약헌 — 5장 50조</h4>
+          <div class="meta">국무위원 집단지도체제</div>
+          <p>한 사람이 아니라 여러 명의 국무위원이 함께 나라를 이끄는 집단지도체제를 도입했어요. 이후 1930년대에 김구가 국무위원회 주석을 맡아 임시정부를 이끌게 됩니다.</p>
+          <div class="hanja-note">💡 '약헌(約憲)'의 '약'은 '임시로 정한 규칙'이라는 뜻이에요. 정식 헌법 전 단계라는 의미가 담겨 있어요.</div>
+        </div>
+        <div class="tab-panel" data-panel="4">
+          <span class="badge">1940.10.9 개정</span>
+          <h4>대한민국임시약헌 — 5장 42조</h4>
+          <div class="meta">주석제 도입, 한국독립당 중심 체제</div>
+          <p>중일전쟁·태평양전쟁이라는 격변기에 발맞춰, 강력한 리더십이 필요해지자 '주석'이 나라를 이끄는 체제로 개편했어요. 김구가 주석을 맡아 임시정부를 이끌었습니다.</p>
+        </div>
+        <div class="tab-panel" data-panel="5">
+          <span class="badge">1944.4.22 개정 · 마지막 개헌</span>
+          <h4>대한민국임시헌장 — 전문 7장 62조</h4>
+          <div class="meta">좌우 합작, 부주석제 신설</div>
+          <p>광복을 1년 앞두고 만들어진 마지막 개헌이에요. 좌익과 우익 세력을 하나의 정부로 통합하기 위해 '부주석'이라는 자리를 새로 만들어 김규식이 맡았습니다. 좌우가 힘을 합쳐 광복을 준비한 노력이 헌법에 그대로 새겨져 있어요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTY ERA -->
+  <section id="party" class="band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 5 · 나뉘었던 힘을 다시 하나로</span>
+        <h2>정당의 시대, 좌우를 하나의 의회로</h2>
+        <p>1920년대 후반부터 임시의정원 안에도 정당이 생겨났고, 좌익과 우익으로 나뉘었어요. 하지만 광복이 다가올수록 이들은 다시 손을 잡습니다.</p>
+      </div>
+      <div class="split-row">
+        <div class="split-card left">
+          <h4>🔵 우파 진영</h4>
+          <p>한국독립당(1930), 한국국민당(1935) 등이 중심이 되어 1937년 <b>한국광복운동단체연합회</b>를 결성했어요.</p>
+        </div>
+        <div class="split-card right">
+          <h4>🔴 좌파 진영</h4>
+          <p>조선민족혁명당, 조선민족해방동맹 등이 1935년 <b>조선민족전선연맹</b>으로 힘을 모았어요.</p>
+        </div>
+      </div>
+      <div class="merge-note">
+        🤝 1942년, 조선민족혁명당 등 좌파 세력이 임시의정원에 참여하면서 두 진영이 마침내 한 의회 안에서 만납니다. 1944년 개헌으로 '부주석제'가 신설되며 좌우연합 정부가 완성됐어요.
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORDS -->
+  <section id="records" class="band-navy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 6 · 기록이 없었다면, 역사도 없다</span>
+        <h2>이 이야기는 어떻게 남겨졌을까</h2>
+        <p>임시의정원의 역사가 오늘날 우리에게 전해지기까지, 오랜 기록 발굴과 정리의 과정이 있었어요.</p>
+      </div>
+      <div class="record-grid">
+        <div class="record-card"><div class="num">1967</div><div class="lbl">국회도서관, 자료 정리 시작</div></div>
+        <div class="record-card"><div class="num">1974</div><div class="lbl">『대한민국임시정부의정원문서』 발간</div></div>
+        <div class="record-card"><div class="num">2005</div><div class="lbl">국사편찬위원회 자료집 발간 시작</div></div>
+        <div class="record-card"><div class="num">51권+</div><div class="lbl">2011년까지 누적된 자료집 규모</div></div>
+      </div>
+      <div class="quote-box">
+        홍진 선생이 남긴 문서와 미주 한인사회에서 발행한 『신한민보』 등, 흩어져 있던 기록들이 하나둘 모이면서 비로소 임시의정원의 진짜 모습이 드러났습니다. 기록을 지키고 연구하는 일이 곧 역사를 지키는 일이었던 셈이에요.
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGACY -->
+  <section id="legacy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Step 7 · 그래서, 지금 우리와 무슨 상관일까</span>
+        <h2>오늘의 국회로 이어지다</h2>
+      </div>
+      <div class="legacy-wrap">
+        <div class="const-quote">
+          <span class="tag">대한민국 헌법 전문 (1948년 제헌헌법 ~ 현행 헌법)</span>
+          <p>"유구한 역사와 전통에 빛나는 우리 대한국민은 3·1운동으로 건립된 대한민국임시정부의 법통을 계승하고…"</p>
+        </div>
+        <p style="text-align:center; color:var(--muted); font-size:14.5px;">
+          1948년 제헌국회는 새 나라를 '만든' 것이 아니라, 임시의정원의 정신을 '이어받았다'고 스스로 밝혔습니다. 그래서 지금 우리 국회의사당의 뿌리를 거슬러 올라가면, 1975년에 지어진 건물이 아니라 <b>1919년 상하이의 작은 회의실</b>에 닿게 됩니다.
+        </p>
+        <div class="legacy-flow">
+          <span class="node">1919 임시의정원</span><span class="sep">→</span>
+          <span class="node">1948 제헌국회</span><span class="sep">→</span>
+          <span class="node">오늘의 국회</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">마지막 단계</span>
+        <h2>얼마나 기억하고 있나요?</h2>
+        <p>5문제를 풀며 오늘 배운 내용을 정리해봐요.</p>
+      </div>
+
+      <div id="quizContainer"></div>
+
+      <div class="quiz-result" id="quizResult">
+        <div class="score" id="scoreText">0 / 5</div>
+        <p id="resultMsg"></p>
+        <button class="restart-btn" id="restartBtn">다시 풀기</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>이 콘텐츠는 국회기록원이 청소년의 역사 이해를 돕기 위해 제작한 기록 기반 학습 자료입니다.</div>
+    <div class="src">
+      <strong>참고 자료</strong> · 김희곤(안동대학교 교수·경북독립운동기념관장), 「대한민국 임시의정원의 역사와 가치」<br>
+      원문 이미지 출처: 국가기록원 · 국회도서관 등 관련 기관 자료를 바탕으로 재구성했습니다.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* progress bar */
+  var progress = document.getElementById('progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = (isFinite(scrolled) ? scrolled : 0) + '%';
+  }
+  document.addEventListener('scroll', function(){ requestAnimationFrame(updateProgress); }, {passive:true});
+  updateProgress();
+
+  /* mobile menu */
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* hook question */
+  var hookAnswer = document.getElementById('hookAnswer');
+  document.querySelectorAll('.hook-choices button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      hookAnswer.classList.add('show');
+      hookAnswer.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  });
+
+  /* flip cards */
+  document.querySelectorAll('.flip-card').forEach(function(card){
+    function toggle(){ card.classList.toggle('flipped'); }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* timeline accordion */
+  document.querySelectorAll('.tl-item').forEach(function(item){
+    var btn = item.querySelector('.tl-btn');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.tl-item.open').forEach(function(o){
+        if(o !== item){ o.classList.remove('open'); o.querySelector('.tl-btn').setAttribute('aria-expanded','false'); }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+  });
+
+  /* tabs */
+  var tabBtns = document.querySelectorAll('#tabBtns button');
+  var tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      tabPanels.forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelector('.tab-panel[data-panel="'+btn.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  /* quiz */
+  var quizData = [
+    {
+      q: "임시의정원이 처음 문을 연 날짜는 언제일까요?",
+      opts: ["1919년 3월 1일", "1919년 4월 10일", "1945년 8월 15일"],
+      correct: 1,
+      fb: "3·1운동(3월 1일) 이후 한 달여 만인 4월 10일, 상하이에서 임시의정원이 문을 열었어요."
+    },
+    {
+      q: "임시의정원과 임시정부의 관계로 옳은 것은?",
+      opts: ["완전히 같은 조직이다", "임시의정원=국회, 임시정부=행정부 역할을 했다", "임시정부가 임시의정원을 임명했다"],
+      correct: 1,
+      fb: "임시의정원은 입법부(국회), 임시정부는 행정부 역할을 하며 서로 다른 기능을 맡았어요."
+    },
+    {
+      q: "대한민국 임시헌법(헌장)은 총 몇 차례 개정되었을까요?",
+      opts: ["3번", "5번", "7번"],
+      correct: 1,
+      fb: "1919년 제정 이후 1919·1925·1927·1940·1944년, 총 다섯 차례 개정됐어요."
+    },
+    {
+      q: "1948년 제헌헌법 전문에서 밝힌 내용은?",
+      opts: ["임시정부와는 무관한 새 나라를 세운다", "3·1운동으로 건립된 대한민국임시정부의 법통을 계승한다", "임시의정원을 해산하고 새 국회를 만든다"],
+      correct: 1,
+      fb: "지금 헌법 전문에도 남아있는 문장이에요. 제헌국회는 임시정부·임시의정원의 정신을 '이어받는다'고 선언했습니다."
+    },
+    {
+      q: "정부가 공식 지정한 '대한민국 임시정부 수립일'은 언제일까요?",
+      opts: ["4월 10일", "4월 11일", "4월 13일"],
+      correct: 1,
+      fb: "임시의정원이 문을 연 다음 날인 4월 11일, '대한민국'이라는 국호가 정해지고 임시정부가 조직됐어요. 원래는 4월 13일로 기념했지만, 2018년 자료 재검토를 거쳐 2019년(수립 100주년)부터 4월 11일로 정정되었습니다."
+    }
+  ];
+
+  var container = document.getElementById('quizContainer');
+  var score = 0;
+  var answered = 0;
+
+  quizData.forEach(function(item, qi){
+    var card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.innerHTML =
+      '<div class="qnum">Q' + (qi+1) + ' / ' + quizData.length + '</div>' +
+      '<div class="qtext">' + item.q + '</div>' +
+      '<div class="quiz-opts"></div>' +
+      '<div class="quiz-feedback"></div>';
+    var optsWrap = card.querySelector('.quiz-opts');
+    var fb = card.querySelector('.quiz-feedback');
+
+    item.opts.forEach(function(opt, oi){
+      var b = document.createElement('button');
+      b.textContent = opt;
+      b.addEventListener('click', function(){
+        if(b.disabled) return;
+        var allBtns = optsWrap.querySelectorAll('button');
+        allBtns.forEach(function(x){ x.disabled = true; });
+        if(oi === item.correct){
+          b.classList.add('correct');
+          score++;
+        } else {
+          b.classList.add('wrong');
+          allBtns[item.correct].classList.add('correct');
+        }
+        fb.textContent = item.fb;
+        fb.classList.add('show');
+        answered++;
+        if(answered === quizData.length){
+          showResult();
+        }
+      });
+      optsWrap.appendChild(b);
+    });
+
+    container.appendChild(card);
+  });
+
+  var resultBox = document.getElementById('quizResult');
+  var scoreText = document.getElementById('scoreText');
+  var resultMsg = document.getElementById('resultMsg');
+
+  function showResult(){
+    scoreText.textContent = score + ' / ' + quizData.length;
+    var msg;
+    if(score === quizData.length){ msg = '완벽해요! 임시의정원 박사네요. 👏'; }
+    else if(score >= quizData.length - 1){ msg = '거의 다 맞혔어요! 조금만 더 살펴보면 완벽할 것 같아요.'; }
+    else if(score >= quizData.length / 2){ msg = '절반 이상 맞혔어요. 위 내용을 다시 훑어보며 복습해봐요.'; }
+    else { msg = '괜찮아요, 위로 스크롤해서 다시 한 번 이야기를 따라가 봐요!'; }
+    resultMsg.textContent = msg;
+    resultBox.classList.add('show');
+    resultBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  document.getElementById('restartBtn').addEventListener('click', function(){
+    score = 0; answered = 0;
+    container.innerHTML = '';
+    resultBox.classList.remove('show');
+    quizData.forEach(function(item, qi){
+      var card = document.createElement('div');
+      card.className = 'quiz-card';
+      card.innerHTML =
+        '<div class="qnum">Q' + (qi+1) + ' / ' + quizData.length + '</div>' +
+        '<div class="qtext">' + item.q + '</div>' +
+        '<div class="quiz-opts"></div>' +
+        '<div class="quiz-feedback"></div>';
+      var optsWrap = card.querySelector('.quiz-opts');
+      var fb = card.querySelector('.quiz-feedback');
+      item.opts.forEach(function(opt, oi){
+        var b = document.createElement('button');
+        b.textContent = opt;
+        b.addEventListener('click', function(){
+          if(b.disabled) return;
+          var allBtns = optsWrap.querySelectorAll('button');
+          allBtns.forEach(function(x){ x.disabled = true; });
+          if(oi === item.correct){ b.classList.add('correct'); score++; }
+          else { b.classList.add('wrong'); allBtns[item.correct].classList.add('correct'); }
+          fb.textContent = item.fb;
+          fb.classList.add('show');
+          answered++;
+          if(answered === quizData.length){ showResult(); }
+        });
+        optsWrap.appendChild(b);
+      });
+      container.appendChild(card);
+    });
+    document.getElementById('quiz').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+})();
+</script>
+</body>
+</html>
